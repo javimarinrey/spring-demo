@@ -1,0 +1,16 @@
+server:
+  port: 8081
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+servicios: auth,notificaciones,usuarios
+color: Azul
+spring:
+  application:
+    name: demo
+app:
+  nombre: Mi Aplicación
+  autor: Javi Marin
+  puerto: '8080'
