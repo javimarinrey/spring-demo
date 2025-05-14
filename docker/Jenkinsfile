@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven 3.8.8' // Asegúrate de que esté instalado en Jenkins
+        jdk 'jdk-21'         // Asegúrate de que Java 21 esté configurado
+    }
+
+    stages {
+        stage('Clonar repositorio') {
+            steps {
+                git url: 'https://github.com/usuario/repositorio-springboot.git', branch: 'main'
+            }
+        }
+
+        stage('Compilar') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Probar') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Ejecutar') {
+            steps {
+                sh 'java -jar target/*.jar'
+            }
+        }
+    }
+}
+
